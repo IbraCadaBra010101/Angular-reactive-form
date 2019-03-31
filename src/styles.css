@@ -1,0 +1,83 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+@import "../node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import url('https://fonts.googleapis.com/css?family=Bangers|Carter+One');
+
+h1, h3 {
+  color: white;
+}
+
+body {
+  background: #32b3bb;
+}
+
+.form-container {
+  padding: 10px;
+  display: table;
+  margin: 0 auto 10px;
+}
+
+
+mat-progress-bar {
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+}
+
+button {
+  margin: 0;
+  width: 200px;
+}
+
+mat-form-field {
+  margin-bottom: 55px;
+}
+
+/*CSS-klasser används för att indikera om ett
+fält är orört, korrekt eller inkorrekt ifyllt*/
+
+input.ng-touched.ng-invalid {
+  background-color: red;
+}
+
+input.ng-touched.ng-valid {
+  background-color: #199148;
+}
+
+.is-invalid{
+  background: red;
+  border-right: 5px;
+}
+.valid{
+  background-color:  #199148;
+  border-radius: 5px;
+}
+.float-right{
+  margin: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

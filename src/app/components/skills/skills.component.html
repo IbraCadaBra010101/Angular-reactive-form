@@ -1,0 +1,82 @@
+<form [formGroup]="kompForm">
+  <div class="form-container">
+    <div formArrayName="komp">
+      <div *ngFor="let k of kompArray.controls;
+      let i = index" [formGroupName]="i">
+        <h3>   Kompetens nummer {{i+1}}
+        </h3>
+
+<!--kompetens-->
+        <mat-form-field class="full">
+          <mat-select
+            [ngClass]=
+              "{'is-invalid': k.controls.kompetens.invalid && k.controls.kompetens.touched,
+        'valid': k.controls.kompetens.valid && k.controls.kompetens.touched}"
+
+            placeholder="Kompetens" formControlName="kompetens">
+            <mat-option
+              *ngFor="let k of levelsList" [value]="k">{{k}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="k.controls.kompetens.invalid && k.controls.kompetens.touched">
+            Mig får du inte glömma please!
+          </mat-error>
+        </mat-form-field>
+<!--rating-->
+
+        <mat-form-field class="full">
+        <mat-select
+          [ngClass]=
+            "{'is-invalid': k.controls.rating.invalid && k.controls.rating.touched,
+        'valid': k.controls.rating.valid && k.controls.rating.touched}"
+
+          placeholder="Rejta din skicklighet" formControlName="rating">
+          <mat-option
+            *ngFor="let r of kompetensRatingList" [value]="r">{{r}}</mat-option>
+        </mat-select>
+          <mat-error *ngIf="k.controls.rating.invalid && k.controls.rating.touched">
+            Mig får du inte glömma please!
+          </mat-error>
+      </mat-form-field>
+<!--erfarenhet-->
+
+        <mat-form-field class="full">
+          <mat-select
+            [ngClass]=
+              "{'is-invalid': k.controls.erfarenhet.invalid && k.controls.erfarenhet.touched,
+        'valid': k.controls.erfarenhet.valid && k.controls.erfarenhet.touched}"
+
+            placeholder="Din erfarenhet?" formControlName="erfarenhet">
+            <mat-option
+              *ngFor="let e of erfarenHetList" [value]="e">{{e}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="k.controls.erfarenhet.invalid && k.controls.erfarenhet.touched">
+            Mig får du inte glömma please!
+          </mat-error>
+        </mat-form-field>
+
+
+        <!--risros-->
+        <mat-form-field class="full">
+          <mat-select
+            [ngClass]=
+              "{'is-invalid': k.controls.risRos.invalid && k.controls.risRos.touched,
+        'valid': k.controls.risRos.valid && k.controls.risRos.touched}"
+
+            placeholder="Ris eller Ros" formControlName="risRos">
+            <mat-option
+              *ngFor="let r of gillarLista" [value]="r">{{r}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="k.controls.risRos.invalid && k.controls.risRos.touched">
+            Mig får du inte glömma please!
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="warn" (click)="delKomp(i)">radera</button>
+      </div>
+    </div>
+  </div>
+  <span class="form-container">
+    <button mat-raised-button color="primary" (click)="addKomp()">mer kompetenser?</button>
+  </span>
+</form>
+<!--$ ng build --prod --base-href "https://IbraCadaBra010101.github.io/Angular-reactive-form/"
+-->

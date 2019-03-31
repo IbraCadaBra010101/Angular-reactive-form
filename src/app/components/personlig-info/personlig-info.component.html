@@ -1,0 +1,79 @@
+<form [formGroup]="addressForm">
+  <div class="form-container">
+
+    <h1>LinkedInSlayer<span>&#10003;</span></h1>
+    <!--fullständigt namn div-->
+    <div class="full-name">
+      <mat-form-field>
+        <!-- *ngIf="firstName.invalid && firstName.touched"-->
+        <input matInput placeholder="Förnamn" formControlName="firstName">
+        <mat-error *ngIf="firstName.errors?.minlength">
+         För få tecken. Try again
+        </mat-error>
+        <mat-error *ngIf="firstName.errors?.maxlength">
+         Överdrivet många tecken!
+        </mat-error>
+        <mat-error *ngIf="firstName.invalid && firstName.touched && !firstName.errors?.maxlength && !firstName.errors?.minlength">
+          Glööm inte mig!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <input matInput placeholder="Efternamn" formControlName="lastName">
+        <mat-error *ngIf="lastName.errors?.minlength">
+          Minst två tecken. Try again!
+        </mat-error>
+        <mat-error *ngIf="lastName.errors?.maxlength">
+          Överdrivet många tecken!
+        </mat-error>
+        <mat-error class="invalid"
+          *ngIf="lastName.invalid && lastName.touched &&
+          !lastName.errors?.maxlength && !lastName.errors?.minlength">
+          Glööm inte mig!
+        </mat-error>
+        <mat-error *ngIf="lastName.untouched">
+          Last name
+        </mat-error>
+
+       </mat-form-field>
+    </div>
+
+    <!--stad och mailadress-->
+       <mat-form-field>
+        <input matInput placeholder="Stad" formControlName="city">
+        <mat-error *ngIf="city.errors?.minlength">
+         Minst två tecken!
+        </mat-error>
+        <mat-error *ngIf="city.errors?.maxlength">
+          Alldeles för långt!
+        </mat-error>
+        <mat-error *ngIf="city.invalid && city.touched && !city.errors?.maxlength && !city.errors?.minlength">
+          Glööm inte mig!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="E-post" formControlName="mail">
+        <mat-error *ngIf="mail.invalid && mail.touched && !mail.errors?.maxlength && !mail.errors?.minlength">
+         Glöm inte @!
+        </mat-error>
+      </mat-form-field>
+
+
+    <textarea matInput placeholder="Beskriv kortfattat dina styrkor som medarbetare..."
+              formControlName="description">
+     </textarea>
+
+    <mat-error *ngIf="description.errors?.minlength">
+      Litet tips: Minst 20 tecken!
+    </mat-error>
+    <mat-error *ngIf="description.errors?.maxlength">
+      Alldeles för långt!
+    </mat-error>
+    <mat-error *ngIf="description.invalid && description.touched && !description.errors?.maxlength && !description.errors?.minlength">
+      Glööm inte mig!
+    </mat-error>
+
+  </div>
+</form>

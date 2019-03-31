@@ -1,0 +1,57 @@
+<form [formGroup]="utbildningsForm">
+  <div class="form-container">
+    <div formArrayName="utbildning">
+      <div *ngFor="let utbildning of utbildningsArray.controls;
+      let i = index" [formGroupName]="i">
+        <h3>Ubildning nummer {{i + 1}}</h3>
+<!--start-->
+        <mat-form-field class="full">
+          <input matInput placeholder="utbildningsstart" formControlName="start">
+           <mat-error *ngIf="utbildning.controls.start.errors?.start && utbildning.controls.start.touched">
+            När började din utbildning? Fyll i årtal mellan 1950-2030
+          </mat-error>
+        </mat-form-field>
+        <!--examen-->
+        <mat-form-field class="full">
+          <input matInput placeholder="examensår ex: 2018" formControlName="examen">
+          <!--*ngIf="username.errors?.pattern"-->
+          <mat-error *ngIf="utbildning.controls.examen.errors?.datumIntervall  && utbildning.controls.examen.touched">
+           När tog du examen? Fyll i årtal mellan 1950-2030
+        </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full">
+          <input matInput placeholder="program/inriktning" formControlName="skola">
+
+          <mat-error *ngIf="utbildning.controls.skola.errors?.minlength && utbildning.controls.skola.touched">
+            Minst fem tecken. Try again
+          </mat-error>
+          <mat-error *ngIf="utbildning.controls.skola.invalid && utbildning.controls.program.touched">
+            Mig får du inte glömma please!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full">
+          <mat-select
+            [ngClass]=
+              "{'is-invalid': utbildning.controls.program.invalid && utbildning.controls.program.touched,
+        'valid': utbildning.controls.program.valid && utbildning.controls.program.touched
+
+        }"
+                      placeholder="Utbildningsnivå" formControlName="program">
+            <mat-option
+              *ngFor="let inriktning of inriktningsArray" [value]="inriktning">{{inriktning}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="utbildning.controls.program.invalid && utbildning.controls.program.touched">
+            Mig får du inte glömma please!
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="warn" (click)="deleteUtbildning(i)">radera</button>
+      </div>
+    </div>
+  </div>
+  <span class="form-container">
+    <button mat-raised-button color="primary" (click)="addUtbildning()">Fler utbildningar?</button>
+  </span>
+
+</form>
